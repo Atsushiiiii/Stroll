@@ -1,0 +1,27 @@
+<div class="main user-show">
+  <div class="container--medium">
+    <div class="user">
+      <p><%= @user.email %></p>
+      <% if @user.id == @current_user.id %>
+        <%= link_to("編集", "/users/#{@user.id}/edit") %>
+      <% end %>
+    </div> 
+    <% @user.posts.each do |post| %>
+      <div class="posts-index-item">
+        <% if post.research_type == "調査" %>
+          <div class="icon">
+            <i class="fab fa-wpforms fa-5x"></i>
+          </div>
+        <% else %>
+          <div class="icon--flask">
+            <i class="fas fa-flask fa-5x"></i>
+          </div>
+        <% end %>
+        <div class="posts-index-item__content">
+          <div class="post-right"><%= link_to(post.content, "/posts/#{post.id}/edit") %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

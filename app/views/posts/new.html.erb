@@ -1,0 +1,66 @@
+<div class="main posts-new">
+  <div class="container--medium">
+    <h1 class="form-heading">投稿する</h1>
+    <%= form_for(@post) do |f| %>
+      <div class="form--wide">
+        <div class="form-body">
+          <div class="item">
+            <p>研究の種類</p>
+            <label>
+              <%= f.radio_button :research_type, "実験" %>実験</label>
+            <label>
+              <%= f.radio_button :research_type, "調査" %>調査</label>
+          </div>
+          <div class="item--none">
+            <p>募集曜日と時限</p>
+            <div class="calender">
+              <p>日</p><p>土</p><p>金</p><p>木</p><p>水</p><p>火</p><p>月</p><br>
+              <div class="calender--frame">
+                <% @nums.each do |num| %><% if num % 7 == 1 && num != 36 %><a><%= (num / 7) + 1 %>限</a><% end %><% if num != 36 %><label><%= check_box_tag 'post[time][]', num, nil %></label><% else %><span>その他</span><%= check_box_tag 'post[time][]', num, nil %><% end %><% end %>
+              </div>
+              <div class="clear">
+              </div>
+            </div>
+          </div>
+          <div class="item--none">
+            <p>実施場所</p>
+            <label>
+              <%= f.radio_button :place, "フロンティアリサーチセンター" %>フロンティアリサーチセンター</label>
+              <label>
+              <%= f.radio_button :place, "100号館" %>100号館</label>
+              <label>
+              <%= f.radio_button :place, "101号館" %>101号館</label>
+              <label>
+              <%= f.radio_button :place, "その他" %>その他</label>
+          </div>
+          <div class="item">
+            <p>フォームURL</p>
+            <%= f.text_field :url %>
+          </div>
+          <div class="item">
+            <p>募集要項</p>
+            <% @post.errors.full_messages.each do |message| %>
+              <div class="form-error">
+                <%= message %>
+              </div>
+            <% end %>
+            <%= f.text_area :content %>
+          </div>
+          <%= f.submit "投稿" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#post_research_type_実験").click(function() {
+      $('.item--none').show();
+    });
+
+    $("#post_research_type_調査").click(function() {
+      $('.item--none').hide();
+    });
+  });
+</script>

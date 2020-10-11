@@ -1,0 +1,145 @@
+<div class="main posts-index">
+  <div class="container--big">
+    <div class="refirement-column">
+      <div class="refirement">
+        <p class="refirement__heading">研究の種類から探す<p>
+        <form>
+          <label>
+          <input type="radio" name="research_type" value="調査">調査研究</label>
+          <label><br>
+          <input type="radio" name="research_type" value="実験">実験研究</label>
+        </form>
+      </div>
+      <div class="refirement--none">
+        <p class="refirement__heading">実施場所から探す<p>
+        <form>
+          <label>
+            <input type="checkbox" name="place" value="100号館">100号館</label>
+          <label><br>
+            <input type="checkbox" name="place" value="101号館">101号館</label>
+          <label><br>
+            <input type="checkbox" name="place" value="フロンティアリサーチセンター">フロンティアセンター</label>
+          <label><br>
+            <input type="checkbox" name="place" value="その他">その他</label>
+        </form>
+      </div>
+      <div class="refirement--none">
+        <p class="refirement__heading">曜日・時限から探す<p>
+        <form>
+          <div class="calender">
+            <p>日</p><p>土</p><p>金</p><p>木</p><p>水</p><p>火</p><p>月</p><br>
+            <div class="calender--frame">
+              <% @nums.each do |num| %><% if num % 7 == 1 && num != 36 %><a><%= (num / 7) + 1 %></a><% end %><% if num != 36 %><label><input type="checkbox" name="time" value="<%= num %>"></label><% else %><input type="checkbox" name="time" value="<%= num %>"><span>その他</span><% end %><% end %>
+            </div>
+            <div class="clear">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div>
+        <p class="t">aaa</p>
+        <p class="tr">aaa</p>
+        <p class="try">aaa</p>
+      </div>
+    </div>
+    <% @posts.each do |post| %>
+      <% if post.research_type == "調査" %>
+        <div class="posts-index-item--box-shadow active <%= post.research_type %>">
+          <div class="icon--flask">
+            <i class="fab fa-wpforms fa-5x"></i>
+          </div>
+          <div class="posts-index-item__content">
+            <div class="post-right"><%= post.content %>
+              <div class="join-button-wrapper"><a href="<%= post.url %>"><span class="fas fa-chevron-circle-right"></span>回答に進む</a>
+              </div>　
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <% ts = post.time.gsub("[", "").gsub("]", "").gsub(" ", "").split(",").map {|x| x.gsub(/[^\d]/, "")} %>
+          <div class="posts-index-item--box-shadow active <%= post.research_type %> <%= post.place %><% ts.each do |t| %> <%= t %><% end %>">
+            <div class="icon--flask">
+              <i class="fas fa-flask fa-5x"></i>
+            </div>
+          
+            <div class="posts-index-item__content">
+              <div class="post-right"><%= post.content %>
+                <div class="join-button-wrapper"><a href="<%= post.url %>"><span class="fas fa-chevron-circle-right">申し込む</span></a>
+                </div>　
+              </div>
+            </div>
+          </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('label').click(function() {
+      var x = $('input[name=research_type]:checked').val();
+      $('.posts-index-item--box-shadow').removeClass('active');
+      if (x == "調査") {
+        $('.refirement--none').removeClass('active');
+        $('.調査').addClass('active');
+      } else if (x == "実験") {
+        $('.refirement--none').addClass('active');
+        $('.実験').addClass('active');
+        var ys = $('input[name=place]:checked').map(function(){
+          return $(this).val();
+        }).get();
+        var zs = $('input[name=time]:checked').map(function(){
+          return $(this).val();
+        }).get();
+        
+        if (ys.length != 0 && zs.length != 0) {
+          $('.posts-index-item--box-shadow').removeClass('active');
+          zs.forEach((z)  => {
+            ys.forEach((y)  => {
+              $('.' + y + '.' + z).addClass('active');
+            });
+          });
+        
+        } else if (ys.length != 0) {
+          $('.posts-index-item--box-shadow').removeClass('active');
+          ys.forEach((y)  => {
+            $('.' + y).addClass('active');
+          });
+        
+        } else if (zs.length != 0) {
+          $('.posts-index-item--box-shadow').removeClass('active');
+          zs.forEach((z)  => {
+            $('.' + z).addClass('active');
+          });
+        }
+      }
+      
+      
+     
+   
+      // if (x == null && y == null && zs.length == 0) {
+      //   $('.posts-index-item--box-shadow').addClass('active');
+      // }
+      $('.t').text(x);
+      $('.tr').text(ys);
+      $('.try').text(zs);
+
+      // var x = String(x);
+      
+
+
+   
+      //  $('.' + y).addClass('active');
+
+      // $('.posts-index-item--box-shadow').removeClass('active');
+      // if (y == null) {
+      //   $('.' + x).addClass('active');
+      // } else if (x == null) {
+       
+      // } else {
+      //   $('.' + x + '.' + y).addClass('active');
+      // }
+    });
+  });
+</script>
+

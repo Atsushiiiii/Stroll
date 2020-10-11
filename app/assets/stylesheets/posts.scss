@@ -1,0 +1,276 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+/* posts/index ================================ */
+.refirement-column {
+  float: left;
+  width: 255px;
+}
+
+.refirement--none {
+  display: none;
+}
+
+.refirement__heading {
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont,"ヒラギノ角ゴ ProN W3", Meiryo, "Helvetica Neue", "Segoe UI","Noto Sans Japanese", sans-serif;
+  background-color: rgb(255, 128, 0);
+  padding: 0 15px;
+}
+
+.refirement form {
+  padding: 0 26px 8px;
+}
+
+.refirement--none form {
+  padding: 0 26px 8px;
+}
+
+.refirement select {
+  width: 100%;
+}
+
+.refirement--none select {
+  width: 100%;
+}
+
+.posts-index-item__content {
+  padding: 20px 30px;
+  background-color: white;
+  overflow: hidden;
+}
+
+.post-left img {
+  width: 50px;
+  height: 50px;
+  border-radius: 40%;
+  box-shadow: 0 2px 6px #c1ced7;
+  object-fit: cover;
+}
+
+.post-user-name a {
+  font-weight: 600;
+}
+
+.post-user-name a:hover {
+  color: #3ecdc6;
+}
+
+.post-left {
+  float: left;
+  width: 10%;
+}
+
+.post-right {
+  float: left;
+  width: 100%;
+  text-align: left;
+}
+
+.fa-wpforms {
+  // color: white;;
+}
+
+.icon {
+  text-align: center;
+  background-color: rgba(255,128,0, 0.6);
+}
+
+.icon--flask {
+  text-align: center;
+  color: rgb(255,128,0);
+}
+
+.container--big {
+  // max-width: 600px;
+  // margin: 60px auto;
+  // padding-left: 15px;
+  // padding-right: 15px;
+  padding: 10px 10px 60px;
+  clear: both;
+}
+
+.post-right {
+  white-space: pre-wrap;
+}
+
+.join-button-wrapper {
+  text-align: center;
+  padding: 18px 13px 10px 33px;
+  border: #f4f4f4 5px solid;
+}
+
+.join-button-wrapper a{
+  display: inline-block;
+  line-height: 40px;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: -apple-system, BlinkMacSystemFont,"ヒラギノ角ゴ ProN W3", Meiryo, "Helvetica Neue", "Segoe UI","Noto Sans Japanese", sans-serif;
+  width: 30%;
+  padding: 0 15px;
+  background-color: rgb(51,51,51);
+  border-radius: 3px;
+}
+
+.posts-index-item--box-shadow {
+  box-shadow: 0 0 6px #c1ced7;
+  margin-left: 270px;
+  display: none;
+}
+
+.fa-chevron-circle-right {
+  margin-right: 10px;
+}
+
+.active {
+  display: block;
+}
+
+@media (max-width:670px) {
+  .refirement-column {
+    display: none;
+  }
+
+  .posts-index-item--box-shadow {
+    margin-left: 0;
+  }
+
+  .join-button-wrapper a {
+    width: 100%;
+  }
+
+  .join-button-wrapper {
+    padding: 18px 13px 10px 13px;
+    border: none;
+  }
+}
+
+/* posts/show ================================ */
+.posts-show form {
+  display: inline;
+}
+
+.posts-show-item {
+  padding: 30px;
+  background-color: white;
+  box-shadow: 0 2px 6px #c1ced7;
+  overflow: hidden;
+}
+
+.posts-show-item img {
+  width: 60px;
+  height: 60px;
+  border-radius: 40%;
+  box-shadow: 0 2px 6px #c1ced7;
+  vertical-align: middle;
+  object-fit: cover;
+}
+
+.posts-show-item .post-user-name a {
+  vertical-align: middle;
+  font-size: 24px;
+  margin-left: 15px;
+}
+
+.posts-show-item p {
+  font-size: 24px;
+  margin: 20px 0;
+}
+
+.post-time {
+  color: #8899a6;
+  margin-bottom: 10px;
+}
+
+.like-btn {
+  color: #8899a6;
+}
+
+.like-btn-unlike {
+  color: #ff2581;
+}
+
+.posts-show-item .fa {
+  font-size: 16px;
+  margin-right: 3px;
+}
+
+.post-menus {
+  float: right;
+}
+
+.post-menus a, .post-menus input {
+  color: #8899a6;
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+/* posts/new ================================ */
+.posts-new textarea {
+  font-size: 20px;
+  padding: 10px;
+  min-height: 420px;
+  border: 1px solid rgb(216, 218, 223);
+  resize: none;
+}
+
+.posts-new textarea::-webkit-input-placeholder {
+  font-size: 24px;
+  opacity: 0.5;
+}
+
+ #post_research_type_実験, #post_research_type_調査, #post_place_100号館, #post_place_101号館, #post_place_フロンティアリサーチセンター, #post_place_その他, #other {
+  width: auto;
+}
+
+// label {
+//   margin-bottom: 15px;
+// }
+
+.calender--frame span {
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.item--none {
+  display: none;
+}
+
+.calender p{
+ float: right;
+ width: 12.5%;
+ text-align: center;
+}
+
+.calender input{
+  display: inline-block;
+  width: 12.5%;
+  text-align: center;
+  margin: 0;
+}
+
+.calender a{
+  display: inline-block;
+  width: 12.5%;
+  text-align: center;
+  margin: 0;
+}
+
+.calender--frame {
+  border-top: 1px solid rgb(216, 218, 223);
+}
+
+.container--medium {
+  max-width: 770px;
+  margin: 60px auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  clear: both;
+}
+
+.clear {
+  clear: right;
+}
